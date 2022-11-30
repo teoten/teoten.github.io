@@ -1,53 +1,18 @@
-# scantxt
+# Lorem Ipsum
 
-scantxt is a common way to allow/disallow scanning activity. Similar to `robots.txt` and structured like `dmarc` with features built-in like ownership verification, notification endpoints and scanner verification.
+_"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."_
 
-```
-    +-----------------------------+                   +---------+       +---------+
-    |                             |                   | scanner +------>| scanner |
-+---+     Reporting Endpoint      |<-------+          | private |       | public  +---------+
-|   |                             |        |          | key     |<------+ key     |         |
-|   +-----------------------------+        |          +----+----+       +---------+         |
-|                                          |               |                                |
-|                                          |               v                                |
-|   +-----------------------------+    +---+--------------------------------------------+   |
-|   |                             |    |                                                |   |
-+---+       Target / Asset        |<---+                    Scanner                     |   |
-|   |                             |    |                                                |   |
-v   +-----------------------------+    +--------------------------------+               |   |
-|   |       "scan" records        |    |        "scanner" records       |               |   |
-|   +-------------+---------------+    +----------------+---------------+---------------+   |
-|   | "_scan" DNS | /.well-known/ |    | "_scanner" DNS | /.well-known/ | /.well-known/ |<--+
-|   | TXT records | scan.json     |    | TXT record     | scanner.json  | jwks.json     |
-|   +-------------+---------------+    +----------------+---------------+---------------+
-|                                                                               ^
-|                                                                               |
-+-------------------------------------------------------------------------------+
-```
-(see [overview-diagram.png](overview-diagram.png) if this doesn't render correctly)
+----
 
-## `scan` records
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et ornare felis, nec ornare arcu. Vestibulum eget ex odio. Maecenas eget molestie augue. Donec imperdiet ornare egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque ac augue et sapien varius aliquam. Phasellus aliquam leo vel leo pretium pharetra eu eleifend tortor. Aenean eleifend sit amet nibh at commodo. Curabitur volutpat diam at magna auctor ornare. Suspendisse massa leo, suscipit sit amet varius id, tincidunt quis justo. In hendrerit rutrum facilisis. Duis at tellus blandit, posuere ex nec, eleifend arcu.
 
-The recommended method is to use the `_scan` subdomain for DNS TXT records. Alternatively, `/.well-known/scan.json` (with the mime type `application/json`) can be used (`.json` extension optional).
+Donec pharetra eu tellus interdum porttitor. Pellentesque commodo est non magna vulputate pretium. Ut nec metus massa. Vivamus vel nisl ac mi facilisis tincidunt. Phasellus dictum ultrices nulla, sit amet ultricies lorem dapibus sed. Ut tristique nisl quis nisl semper, vel faucibus eros venenatis. Quisque pellentesque sem vitae lacus lobortis posuere. Nulla tellus dolor, rhoncus in ipsum quis, aliquet scelerisque elit. Nulla lacinia turpis id nunc rhoncus rhoncus.
 
-See more info on `scan` records and format here: [SCAN.md](SCAN.md)
+Duis dignissim ex orci, a aliquam nisi dictum ac. Vestibulum vehicula at leo pharetra pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu mauris ante. Donec a auctor magna, sit amet malesuada lacus. Mauris efficitur, lorem ut commodo tincidunt, sem leo consequat mi, sed finibus nisl turpis sit amet eros. Donec vulputate ex vel mi viverra, at fringilla velit tempor. Fusce rhoncus, est vitae condimentum bibendum, felis massa fermentum mi, non suscipit lacus enim feugiat purus. Cras et ligula et enim dignissim imperdiet. In auctor rhoncus eros eu faucibus.
 
-You can view examples of these at <https://www.scantxt.org/.well-known/scan.json> or by doing a DNS TXT lookup against `_scan.scantxt.org`
+Vivamus scelerisque facilisis justo, id aliquam arcu ultricies at. Maecenas enim risus, congue non pretium ut, rutrum in nunc. Cras eget tincidunt eros. Nunc ut luctus risus. Sed sed porta risus. Aliquam sollicitudin lectus neque, ut sodales orci luctus non. Cras tincidunt purus sem, ut placerat augue tristique et. Fusce malesuada augue id mattis tristique. Nulla convallis enim magna. Phasellus lobortis sed nulla vitae mattis. Proin nunc felis, scelerisque non egestas nec, rutrum vel nisi. Donec euismod elit in odio suscipit, sit amet mattis turpis vestibulum. Proin id porttitor leo. Sed fermentum, tellus in viverra bibendum, justo quam tempus sapien, ac egestas lacus ipsum ut ante.
 
-## `scanner` records
+In tempus dignissim elit, ac tincidunt eros. Mauris id luctus mi, ac fringilla lorem. Sed non justo semper, faucibus urna nec, feugiat augue. Aliquam nisi arcu, pretium ac odio quis, dictum porta tellus. Integer semper dolor eget augue fermentum, at elementum diam feugiat. Pellentesque dapibus purus in nulla sodales, a fringilla lorem molestie. Integer neque odio, elementum vitae neque at, scelerisque cursus purus. Aliquam ultrices eget tellus non faucibus. Integer lobortis facilisis justo a luctus. Suspendisse vitae aliquam risus, in porta leo. Integer ornare, dui a vestibulum bibendum, risus tortor feugiat erat, et vehicula sapien ligula sit amet velit.
 
-This is a mechanism for scanners to set contact details and signpost what type of scanning they perform.
+Generated 5 paragraphs, 461 words, 3048 bytes of Lorem Ipsum
 
-The recommended method is to use the `_scanner` subdomain for DNS TXT records. Alternatively, `/.well-known/scanner.json` (with the mime type `application/json`) can be used (`.json` extension optional).
-
-See about `scanner` records and format here: [SCANNER.md](SCANNER.md)
-
-You can view an example of this at <https://www.scantxt.app/.well-known/scanner.json> or by doing a DNS TXT lookup against `_scanner.scantxt.app`
-
-## Scanner guidance
-
-See [scanner-guidance](scanner-guidance.md) for details on identification and verification.
-
-## Reporting guidance
-
-See [reporting-guidance](reporting-guidance.md) for details on reporting endpoints and mechanisms.
